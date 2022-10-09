@@ -1,0 +1,179 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>【文字数カウント】</TITLE>
+<STYLE type="text/css">
+<!--
+.btn{
+  color : gray;
+  cursor : pointer;
+  font-size : 9pt;
+  background-color : white;
+  border-color : white;
+}
+-->
+</STYLE>
+<SCRIPT language="JavaScript">
+
+function count(f, val) {
+	var s, l, r, p, m;
+	if (!val) return;
+
+	s = val.replace(/\n/g, "");
+	f.spa.value = s.length;
+
+	l = val.replace(/\s|　/g, "");
+	f.let.value = l.length;
+
+	r = val.match(/\n/g);
+	f.ret.value = r && r.length + 1 || "1";
+
+	p = val.match(/\n(?:　|\s+|「|『|＜|《|〈|≪|（|“|‘|\(|\"|\')./g);
+	f.par.value = p && p.length + 1 || "1";
+
+	m = Math.ceil(s.length / 400);
+	f.man.value = m;
+}
+</SCRIPT>
+<META name="build" content="2004.4.19">
+<META name="description" content="【本文の文字数・改行数を表示できます】">
+<META name="keywords" content="文字数カウント 文字数 掲示板 トレード掲示板 BBS チョコエッグ 食玩 チョコＱ 玩具">
+<META name="Author" content="Megukuma">
+<META name="robots" content="ALL">
+<META name="reply-to" content="megukuma@syd.odn.ne.jp">
+<META name="content-language" content="ja">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 11.0.3.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<STYLE type="text/css">
+<!--
+.btn{
+  color : gray;
+  cursor : pointer;
+  font-size : 9pt;
+  background-color : white;
+  border-color : white;
+}
+-->
+</STYLE>
+<SCRIPT language="JavaScript"><!--
+
+function count(f, val) {
+        console.log(f);
+        console.log(val);
+	var s, l, r, p, m;
+	if (!val) return;
+
+	s = val.replace(/\n/g, "");
+	f.spa.value = s.length;
+
+	l = val.replace(/\s|　/g, "");
+	f.let.value = l.length;
+
+	r = val.match(/\n/g);
+	f.ret.value = r && r.length + 1 || "1";
+
+	p = val.match(/\n(?:　|\s+|「|『|＜|《|〈|≪|（|“|‘|\(|\"|\')./g);
+	f.par.value = p && p.length + 1 || "1";
+
+	m = Math.ceil(s.length / 400);
+	f.man.value = m;
+}
+
+//--></SCRIPT> </HEAD>
+<BODY text="#306800" link="#306800" vlink="#306800" alink="#306800">
+<DIV align="center"><BR>
+<SCRIPT language="JavaScript">
+var msg = "☆ご投稿本文の文字数を確認する際には、下の欄に本文を張り付けて、「字数を数える」ボタンを押してください♪";
+var delay = 100;
+var pos = 100;
+function scroll_status() {
+	setTimeout("scroll_status()", delay);
+	var out = "";
+	if (pos >= 0) {
+		for (c = 0; c < pos; c++) {
+			out += " ";
+		}
+		out += msg;
+	}
+	else {
+		out = msg.substring(-pos, msg.length);
+	}
+	pos = (-pos > msg.length) ? 100 : pos - 1;
+	window.status = out;
+}
+scroll_status();
+
+</SCRIPT><BR>
+<BR>
+<FONT size="-1">【トレード(交換)掲示板 文字数カウント】<BR>
+<BR>
+</FONT>
+<TABLE border="1" width="325">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1">□使い方：文字数を確認する際には、下の欄に本文を張り付け、「字数を数える」ボタンを押してください。原稿用紙換算、段落数もカウントすることができます。内容をクリアするときは「リセット」ボタンをご利用ください。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<FONT size="-1"><BR>
+<BR>
+<FORM id="frm" onsubmit="count(this, this.txt.value); return false">
+    <TEXTAREA id="txt" name="txt" rows="10" cols="64"></TEXTAREA>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD align="middle" colspan="2"><INPUT class="btn" type="submit" value="字数を数える"> <INPUT class="btn" type="reset" value="リセット"><BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">■文字数（スペース込み）</FONT></TD>
+      <TD><INPUT readonly size="7" value="0" name="spa"></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">■文字数（スペース無視）</FONT></TD>
+      <TD><INPUT readonly size="7" value="0" name="let"></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">■行数</FONT></TD>
+      <TD><INPUT readonly size="7" value="0" name="ret"></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">■段落数</FONT></TD>
+      <TD><INPUT readonly size="7" value="0" name="par"></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">■原稿用紙換算(400x?枚)</FONT></TD>
+      <TD><INPUT readonly size="7" value="0" name="man"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</FORM>
+<BR>
+<BR>
+<FONT size="-1"><B><FONT color="#306800"><FONT size="-1"><FONT color="#306800"><FONT size="-1"><FONT color="#306800"><FONT size="-1"><FONT color="#306800"><FONT size="-1" color="#306800"><FONT size="-1" color="#306800"><FONT size="-1"><FONT color="#306800"><FONT size="-1"><FONT color="#306800"><FONT size="-1" color="#306800"><FONT size="-1" color="#306800"><BR>
+</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></B></FONT><BR>
+</FONT><FONT size="-1" color="#306800">Back to ENTRANCE</FONT></B><BR>
+
+<A href="index.htm"><U><FONT color="#306800"><B><FONT size="-1">Back to Home</FONT></B></FONT></U></A><BR>
+<BR>
+</FONT></B></FONT><FONT size="-1" color="#306800"><FONT size="-2"><FONT color="#306800"><A href="mailto:megukuma@syd.odn.ne.jp?Subject=To Megukuma"><FONT size="-1"><FONT color="#306800">mail</FONT></FONT></A></FONT></FONT></FONT><BR>
+<FONT color="#306800" size="-1">Feel free to post any comments or suggestions about this page!</FONT><FONT size="-1"><BR>
+<FONT color="#ff0000"><FONT face="times new roman" color="#306800" size="-1">Best viewed at 800x600 resolution</FONT></FONT></FONT><BR>
+<BR>
+<FONT color="#9898ff" size="-1"><B>-ATTENTION-</B></FONT><FONT color="#9898ff"><BR>
+</FONT><FONT size="-1" color="#9898ff">☆本文を転用、転載される場合は、事前にご連絡を頂けると嬉しいです♪</FONT><BR>
+<FONT color="#9898ff" size="-1">Copyright 2002 Megukuma. All rights reserved.</FONT><BR>
+<BR>
+</DIV>
+<SCRIPT language="JavaScript">
+    const selectElement = document.getElementById('txt');
+    const selectFrmElement = document.getElementById('frm');
+    selectElement.addEventListener('change', (event) => {
+        count(selectFrmElement, selectFrmElement.txt.value)
+    });
+</SCRIPT>
+</BODY>
+</HTML>
